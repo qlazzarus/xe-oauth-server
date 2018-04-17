@@ -221,6 +221,8 @@ class devcenterView extends devcenter
          */
         $memberModel = getModel('member');
 
+        \Context::addHtmlHeader('<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">');
+
         $params = $request->getQueryParams();
         $entry = array_key_exists('client_id', $params) ? $devcenterModel->getAppByClientId($params['client_id']) : null;
         if (true === $entry instanceof ClientEntity) {
