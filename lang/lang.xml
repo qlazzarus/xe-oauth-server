@@ -174,4 +174,31 @@
     <item name="devcenter_app_secret_revoke_confirm">
         <value xml:lang="ko"><![CDATA[정말 차단하시겠습니까?]]></value>
     </item>
+	<item name="devcenter_rate_limiter">
+		<value xml:lang="ko"><![CDATA[Rate Limiter 사용여부]]></value>
+	</item>
+	<item name="devcenter_rate_limiter_description">
+		<value xml:lang="ko"><![CDATA[
+			성능을 위해 비정상적으로 많은 API 요청만 제한되고 일상적인 API 요청은 별다른 제약 없이 사용할 수 있는 효과가 있습니다.<br />
+			이 기능을 사용하기 위해서 <strong>Redis 연결</strong>이 필요합니다.<br />
+			<br />
+			순간적으로 제한 요청 이상의 콜이 발생한다면 429 에러(Too Many Request)를 반환합니다.<br />
+			Header의 Rate-Limiting-Meta 를 참조하시면 429 에러를 피할 수 있습니다.
+		]]></value>
+	</item>
+	<item name="devcenter_rate_limit_capacity">
+		<value xml:lang="ko"><![CDATA[초당 허용 요청 수]]></value>
+	</item>
+	<item name="devcenter_redis_host">
+		<value xml:lang="ko"><![CDATA[Redis Host]]></value>
+	</item>
+	<item name="devcenter_redis_port">
+		<value xml:lang="ko"><![CDATA[Redis Port]]></value>
+	</item>
+	<item name="devcenter_use_app_thumbnail">
+		<value xml:lang="ko"><![CDATA[앱 아이콘 사용여부]]></value>
+	</item>
+	<item name="devcenter_use_app_thumbnail_description">
+		<value xml:lang="ko"><![CDATA[사용자들이 앱 아이콘을 직접 올릴 수 있도록 설정할 수 있습니다.]]></value>
+	</item>
 </lang>

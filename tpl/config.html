@@ -4,13 +4,13 @@
 </div>
 
 <div class="x_page-header">
-    <h1>개발자센터</h1>
+    <h1>{$lang->devcenter}</h1>
 </div>
 
 <div class="header4">
     <ul class="x_nav x_nav-tabs">
-        <li class="x_active"><a href="{getUrl('act', 'dispDevcenterAdminConfig')}">기본 기능 설정</a></li>
-        <li><a href="{getUrl('act', 'dispDevcenterAdminApps')}">앱 관리</a></li>
+        <li class="x_active"><a href="{getUrl('act', 'dispDevcenterAdminConfig')}">{$lang->cmd_setup}</a></li>
+        <li><a href="{getUrl('act', 'dispDevcenterAdminApps')}">{$lang->cmd_management}</a></li>
     </ul>
 </div>
 
@@ -21,79 +21,71 @@
         <input type="hidden" name="xe_validator_id" value="modules/devcenter/tpl/admin_config/1" />
 
         <div class="x_control-group">
-            <label for="use_rate_limiter" class="x_control-label">Rate Limiter 사용여부</label>
+            <label for="use_rate_limiter" class="x_control-label">{$lang->devcenter_rate_limiter}</label>
             <div class="x_controls">
                 <!--@if ($entry->use_rate_limiter)-->
                     <label>
                         <input type="radio" name="use_rate_limiter" value="1" id="use_rate_limiter" checked="checked" />
-                        사용함
+                        {$lang->use}
                     </label>
                     <label>
                         <input type="radio" name="use_rate_limiter" value="0" />
-                        사용안함
+                        {$lang->notuse}
                     </label>
                 <!--@else-->
                     <label>
                         <input type="radio" name="use_rate_limiter" value="1" id="use_rate_limiter" />
-                        사용함
+                        {$lang->use}
                     </label>
                     <label>
                         <input type="radio" name="use_rate_limiter" value="0" checked="checked" />
-                        사용안함
+                        {$lang->notuse}
                     </label>
                 <!--@endif-->
-                <p class="x_help-block">
-                    성능을 위해 비정상적으로 많은 API 요청만 제한되고 일상적인 API 요청은 별다른 제약 없이 사용할 수 있는 효과가 있습니다.<br />
-                    이 기능을 사용하기 위해서 <strong>Redis 연결</strong>이 필요합니다.<br />
-                    <br />
-                    순간적으로 제한 요청 이상의 콜이 발생한다면 429 에러(Too Many Request)를 반환합니다.<br />
-                    Header의 Rate-Limiting-Meta 를 참조하시면 429 에러를 피할 수 있습니다.
-                </p>
+                <p class="x_help-block">{$lang->devcenter_rate_limiter_description}</p>
             </div>
         </div>
         <div class="x_control-group">
-            <label for="rate_limit_capacity" class="x_control-label">초당 허용 요청 수</label>
+            <label for="rate_limit_capacity" class="x_control-label">{$lang->devcenter_rate_limit_capacity}</label>
             <div class="x_controls">
                 <input type="number" id="rate_limit_capacity" name="rate_limit_capacity" value="{$entry->rate_limit_capacity}" />
             </div>
         </div>
         <div class="x_control-group">
-            <label for="redis_host" class="x_control-label">Redis Host</label>
+            <label for="redis_host" class="x_control-label">{$lang->devcenter_redis_host}</label>
             <div class="x_controls">
                 <input type="text" id="redis_host" name="redis_host" value="{$entry->redis_host}" />
             </div>
         </div>
         <div class="x_control-group">
-            <label for="redis_port" class="x_control-label">Redis Port</label>
+            <label for="redis_port" class="x_control-label">{$lang->devcenter_redis_port}</label>
             <div class="x_controls">
                 <input type="number" id="redis_port" name="redis_port" value="{$entry->redis_port}" />
             </div>
         </div>
         <div class="x_control-group">
-            <label for="use_app_thumbnail" class="x_control-label">앱 아이콘 사용여부</label>
+            <label for="use_app_thumbnail" class="x_control-label">{$lang->devcenter_use_app_thumbnail}</label>
             <div class="x_controls">
                 <!--@if ($entry->use_app_thumbnail)-->
                 <label>
                     <input type="radio" name="use_app_thumbnail" value="1" id="use_app_thumbnail" checked="checked" />
-                    사용함
+                    {$lang->use}
                 </label>
                 <label>
                     <input type="radio" name="use_app_thumbnail" value="0" />
-                    사용안함
+                    {$lang->notuse}
                 </label>
                 <!--@else-->
                 <label>
                     <input type="radio" name="use_app_thumbnail" value="1" id="use_app_thumbnail" />
-                    사용함
+                    {$lang->use}
                 </label>
                 <label>
                     <input type="radio" name="use_app_thumbnail" value="0" checked="checked" />
-                    사용안함
+                    {$lang->notuse}
                 </label>
                 <!--@endif-->
-                <p class="x_help-block">
-                    사용자들이 앱 아이콘을 직접 올릴 수 있도록 설정할 수 있습니다.
-                </p>
+                <p class="x_help-block">{$lang->devcenter_use_app_thumbnail_description}</p>
             </div>
         </div>
         <div class="x_clearfix btnArea">

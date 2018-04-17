@@ -4,13 +4,13 @@
 </div>
 
 <div class="x_page-header">
-    <h1>개발자센터</h1>
+    <h1>{$lang->devcenter}</h1>
 </div>
 
 <div class="header4">
     <ul class="x_nav x_nav-tabs">
-        <li><a href="{getUrl('act', 'dispDevcenterAdminConfig')}">기본 기능 설정</a></li>
-        <li class="x_active"><a href="{getUrl('act', 'dispDevcenterAdminApps')}">앱 관리</a></li>
+        <li><a href="{getUrl('act', 'dispDevcenterAdminConfig')}">{$lang->cmd_setup}</a></li>
+        <li class="x_active"><a href="{getUrl('act', 'dispDevcenterAdminApps')}">{$lang->cmd_management}</a></li>
     </ul>
 </div>
 
@@ -18,12 +18,12 @@
     <table class="x_table x_table-striped x_table-hover">
         <thead>
             <tr>
-                <th scope="col">제목</th>
-                <th scope="col" class="nowr">썸네일</th>
-                <th scope="col" class="nowr">설명</th>
-                <th scope="col" class="nowr">권한</th>
-                <th scope="col" class="nowr">만든 사람</th>
-                <th scope="col" class="nowr">생성일</th>
+                <th scope="col">{$lang->devcenter_app_name}</th>
+                <th scope="col" class="nowr">{$lang->devcenter_app_thumbnail}</th>
+                <th scope="col" class="nowr">{$lang->devcenter_app_description}</th>
+                <th scope="col" class="nowr">{$lang->devcenter_app_scope}</th>
+                <th scope="col" class="nowr">{$lang->devcenter_app_owner}</th>
+                <th scope="col" class="nowr">{$lang->regdate}</th>
                 <th scope="col" class="nowr">-</th>
             </tr>
         </thead>
