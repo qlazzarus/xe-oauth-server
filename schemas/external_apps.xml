@@ -1,0 +1,14 @@
+<table name="external_apps">
+    <column name="app_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" auto_increment="auto_increment" />
+    <column name="unique_app_srl" type="char" size="29" notnull="notnull" unique="unique_app_srl" />
+    <column name="member_srl" type="number" size="11" default="0" index="idx_member_srl" />
+    <column name="name" type="varchar" size="64" notnull="notnull" default="" unique="unique_app_name" />
+    <column name="thumbnail" type="varchar" size="255" notnull="notnull" default="" />
+    <column name="description" type="varchar" size="255" notnull="notnull" default="" />
+    <column name="website_url" type="varchar" size="255" notnull="notnull" default="" />
+    <column name="callback_url" type="varchar" size="255" notnull="notnull" default="" />
+    <column name="access_level" type="char" size="1" notnull="notnull" default="w" />
+    <column name="client_secret" type="char" size="128" notnull="notnull" default="" index="idx_api_secret" />
+    <column name="created_at" type="date" />
+    <column name="updated_at" type="date" />
+</table>

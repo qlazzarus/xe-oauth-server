@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="devcenter">
+		<value xml:lang="ko"><![CDATA[XE Developer Center]]></value>
+	</item>
+	<item name="devcenter_grant">
+		<value xml:lang="ko"><![CDATA[내 어플리케이션 목록]]></value>
+	</item>
+	<item name="devcenter_grant_description">
+		<value xml:lang="ko"><![CDATA[내 계정의 정보에 액세스할 수 있는 앱은 다음과 같습니다.]]></value>
+	</item>
+	<item name="devcenter_register">
+		<value xml:lang="ko"><![CDATA[내 어플리케이션 등록]]></value>
+	</item>
+    <item name="devcenter_modify">
+        <value xml:lang="ko"><![CDATA[내 어플리케이션 수정]]></value>
+    </item>
+	<item name="devcenter_config">
+		<value xml:lang="ko"><![CDATA[내 어플리케이션 관리]]></value>
+	</item>
+	<item name="devcenter_revoke">
+		<value xml:lang="ko"><![CDATA[어플리케이션 차단]]></value>
+	</item>
+	<item name="devcenter_config_description">
+		<value xml:lang="ko"><![CDATA[내 소유의 앱은 다음과 같습니다.]]></value>
+	</item>
+	<item name="devcenter_revoke_btn">
+		<value xml:lang="ko"><![CDATA[앱 차단]]></value>
+	</item>
+    <item name="devcenter_modify_btn">
+        <value xml:lang="ko"><![CDATA[앱 수정]]></value>
+    </item>
+    <item name="devcenter_guide">
+        <value xml:lang="ko"><![CDATA[개발 가이드]]></value>
+    </item>
+	<item name="devcenter_permission">
+		<value xml:lang="ko"><![CDATA[권한]]></value>
+	</item>
+	<item name="devcenter_approve_time">
+		<value xml:lang="ko"><![CDATA[승인시간]]></value>
+	</item>
+	<item name="devcenter_app_name">
+		<value xml:lang="ko"><![CDATA[앱 이름]]></value>
+	</item>
+    <item name="devcenter_app_basic_info">
+        <value xml:lang="ko"><![CDATA[기본정보]]></value>
+    </item>
+    <item name="devcenter_app_additional_info">
+        <value xml:lang="ko"><![CDATA[추가정보]]></value>
+    </item>
+	<item name="devcenter_app_name_description">
+		<value xml:lang="ko"><![CDATA[등록할 앱의 이름을 입력합니다. 32자 이하로 입력하세요.]]></value>
+	</item>
+	<item name="devcenter_app_description">
+		<value xml:lang="ko"><![CDATA[앱 설명]]></value>
+	</item>
+	<item name="devcenter_app_description_description">
+		<value xml:lang="ko"><![CDATA[앱에 대한 자세한 설명을 입력합니다]]></value>
+	</item>
+	<item name="devcenter_app_callback">
+		<value xml:lang="ko"><![CDATA[콜백 URL]]></value>
+	</item>
+	<item name="devcenter_app_callback_description">
+		<value xml:lang="ko"><![CDATA[인증 후 이동할 경로를 지정합니다. OAuth 2.0 앱은 인증 후 Token 을 전달하기 위한 콜백 주소를 필요로 합니다.]]></value>
+	</item>
+    <item name="devcenter_app_thumbnail">
+        <value xml:lang="ko"><![CDATA[아이콘]]></value>
+    </item>
+    <item name="devcenter_app_thumbnail_description">
+        <value xml:lang="ko"><![CDATA[72x72 사이즈로 업로드 하여 주세요.]]></value>
+    </item>
+    <item name="devcenter_app_key">
+        <value xml:lang="ko"><![CDATA[API 공개키]]></value>
+    </item>
+    <item name="devcenter_app_key_description">
+        <value xml:lang="ko"><![CDATA[API 공개키는 서버에서 앱을 구분하는 수단으로 쓰입니다.]]></value>
+    </item>
+    <item name="devcenter_app_secret">
+        <value xml:lang="ko"><![CDATA[API 비밀키]]></value>
+    </item>
+    <item name="devcenter_app_secret_description">
+        <value xml:lang="ko"><![CDATA[비밀키는 노출이 되지 않도록 하십시오. 이 키는 앱의 인증 과정에서만 쓰입니다.]]></value>
+    </item>
+	<item name="devcenter_app_name_exists">
+		<value xml:lang="ko"><![CDATA[이미 존재하는 앱 이름입니다. 다른 이름을 입력해주세요.]]></value>
+	</item>
+	<item name="devcenter_app_third_party_consent">
+		<value xml:lang="ko"><![CDATA[개인정보 제3자 제공 동의]]></value>
+	</item>
+	<item name="devcenter_app_third_party_consent_item">
+		<value xml:lang="ko"><![CDATA[는 회원들의 개인정보를 안전하게 취급하는데 최선을 다합니다.]]></value>
+	</item>
+	<item name="devcenter_app_owner">
+		<value xml:lang="ko"><![CDATA[제공받는 자]]></value>
+	</item>
+	<item name="devcenter_app_reason">
+		<value xml:lang="ko"><![CDATA[제공받는 목적]]></value>
+	</item>
+	<item name="devcenter_app_provide">
+		<value xml:lang="ko"><![CDATA[보유기간]]></value>
+	</item>
+	<item name="devcenter_app_provide_item">
+		<value xml:lang="ko"><![CDATA[서비스 탈퇴시 지체없이 파기]]></value>
+	</item>
+	<item name="devcenter_app_privacy">
+		<value xml:lang="ko"><![CDATA[제공되는 개인정보 항목]]></value>
+	</item>
+	<item name="devcenter_app_privacy_item">
+		<value xml:lang="ko"><![CDATA[프로필 정보]]></value>
+	</item>
+	<item name="devcenter_app_scope">
+		<value xml:lang="ko"><![CDATA[사용권한]]></value>
+	</item>
+    <item name="devcenter_app_scope_description">
+        <value xml:lang="ko"><![CDATA[상위 사용권한으로 변경시, 기존 유저들이 해당 사용권한을 사용할려면 개인정보 제 3자 제공 재동의가 필요합니다.]]></value>
+    </item>
+    <item name="devcenter_app_website">
+        <value xml:lang="ko"><![CDATA[웹사이트]]></value>
+    </item>
+    <item name="devcenter_app_website_description">
+        <value xml:lang="ko"><![CDATA[앱을 홍보할 웹사이트 주소를 입력하세요.]]></value>
+    </item>
+	<item name="devcenter_scope_profile">
+		<value xml:lang="ko"><![CDATA[개인정보 보기]]></value>
+	</item>
+	<item name="devcenter_scope_profile_long">
+		<value xml:lang="ko"><![CDATA[개인정보 읽기 권한]]></value>
+	</item>
+	<item name="devcenter_scope_read">
+		<value xml:lang="ko"><![CDATA[읽기]]></value>
+	</item>
+	<item name="devcenter_scope_read_long">
+		<value xml:lang="ko"><![CDATA[자기 글/댓글 읽기 권한]]></value>
+	</item>
+	<item name="devcenter_scope_write">
+		<value xml:lang="ko"><![CDATA[쓰기]]></value>
+	</item>
+	<item name="devcenter_scope_write_long">
+		<value xml:lang="ko"><![CDATA[글/댓글 쓰기 권한]]></value>
+	</item>
+	<item name="devcenter_scope_message">
+		<value xml:lang="ko"><![CDATA[메세지]]></value>
+	</item>
+	<item name="devcenter_scope_message_long">
+		<value xml:lang="ko"><![CDATA[메세지 읽기/쓰기 권한]]></value>
+	</item>
+	<item name="devcenter_scope_stream">
+		<value xml:lang="ko"><![CDATA[남의 글 보기]]></value>
+	</item>
+	<item name="devcenter_scope_stream_long">
+		<value xml:lang="ko"><![CDATA[다른 사람의 글 보기 권한]]></value>
+	</item>
+	<item name="devcenter_app_not_exists">
+		<value xml:lang="ko"><![CDATA[존재하지 않는 앱입니다.]]></value>
+	</item>
+	<item name="devcenter_app_permission_denied">
+		<value xml:lang="ko"><![CDATA[권한이 없습니다.]]></value>
+	</item>
+	<item name="devcenter_app_file_invalid">
+		<value xml:lang="ko"><![CDATA[파일이 잘못 되었습니다.]]></value>
+	</item>
+	<item name="devcenter_app_file_too_big">
+		<value xml:lang="ko"><![CDATA[파일이 너무 큽니다.]]></value>
+	</item>
+	<item name="devcenter_app_secret_change_btn">
+		<value xml:lang="ko"><![CDATA[변경]]></value>
+	</item>devcenter_app_secret_change_confirm
+    <item name="devcenter_app_secret_change_confirm">
+        <value xml:lang="ko"><![CDATA[정말 변경하시겠습니까?\\n기존 앱 이용자들의 이용이 차단되며\\n앱의 비밀키를 수정 후 재배포 하셔야 합니다.]]></value>
+    </item>
+	<item name="devcenter_app_secret_delete_confirm">
+		<value xml:lang="ko"><![CDATA[정말 삭제하시겠습니까?]]></value>
+	</item>
+    <item name="devcenter_app_secret_revoke_confirm">
+        <value xml:lang="ko"><![CDATA[정말 차단하시겠습니까?]]></value>
+    </item>
+</lang>

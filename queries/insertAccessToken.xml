@@ -1,0 +1,16 @@
+<query id="insertAccessToken" action="insert">
+    <tables>
+        <table name="oauth_access_tokens" />
+    </tables>
+    <columns>
+        <column name="unique_token_srl" var="unique_token_srl" notnull="notnull" />
+        <column name="member_srl" var="member_srl" default="0" />
+        <column name="unique_app_srl" var="unique_app_srl" notnull="notnull" />
+        <column name="name" var="name" notnull="notnull" />
+        <column name="scopes" var="scopes" notnull="notnull" />
+        <column name="revoked" var="revoked" notnull="notnull" />
+        <column name="created_at" var="created_at" notnull="notnull" />
+        <column name="updated_at" var="updated_at" notnull="notnull" />
+        <column name="expired_at" var="expired_at" notnull="notnull" />
+    </columns>
+</query>

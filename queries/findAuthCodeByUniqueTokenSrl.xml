@@ -1,0 +1,16 @@
+<query id="findAuthCodeByUniqueTokenSrl" action="select">
+    <tables>
+        <table name="oauth_auth_codes" />
+    </tables>
+    <columns>
+        <column name="unique_token_srl" />
+        <column name="member_srl" />
+        <column name="unique_app_srl" />
+        <column name="scopes" />
+        <column name="revoked" />
+        <column name="expired_at" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="unique_token_srl" var="unique_token_srl" notnull="notnull" />
+    </conditions>
+</query>

@@ -1,0 +1,30 @@
+<query id="findGrantAppByUniqueAppSrlAndMemberSrl" action="select">
+    <tables>
+        <table name="grant_apps" />
+        <table name="external_apps" />
+    </tables>
+    <columns>
+        <column name="external_apps.name" />
+        <column name="external_apps.thumbnail" />
+        <column name="external_apps.description" />
+        <column name="external_apps.access_level" />
+        <column name="external_apps.website_url" />
+        <column name="grant_apps.grant_srl" />
+        <column name="grant_apps.unique_app_srl" />
+        <column name="grant_apps.revoked" />
+        <column name="grant_apps.created_at" />
+        <column name="grant_apps.updated_at" />
+        <column name="grant_apps.expired_at" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="grant_apps.member_srl" var="member_srl" pipe="and" />
+        <condition operation="equal" column="grant_apps.revoked" default="n" pipe="and" />
+        <condition operation="equal" column="grant_apps.unique_app_srl" default="external_apps.unique_app_srl" notnull="notnull" pipe="and" />
+    </conditions>
+    <navigation>
+        <index var="sort_index" default="grant_apps.grant_srl" order="desc" />
+        <list_count var="list_count" default="20" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
+    </navigation>
+</query>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+    <title xml:lang="ko">개발자센터</title>
+    <title xml:lang="en">Developer Center</title>
+    <description xml:lang="ko">O-auth 2.0 로그인과 RESTFul API 를 지원합니다.</description>
+    <description xml:lang="en">Provide O-auth 2.0 Login spec And RESTFul API</description>
+    <version>0.2.4</version>
+    <date>2017-05-16</date>
+    <category>system</category>
+    <author email_address="ecst@monolife.co.kr" link="http://github.com/monoless/xe-oauth-server">
+        <name xml:lang="ko">monoless</name>
+        <name xml:lang="en">monoless</name>
+    </author>
+</module>

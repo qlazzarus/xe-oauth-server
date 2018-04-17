@@ -1,0 +1,135 @@
+<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/devcenter/tpl/admin_config/1'"
+     class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+    <p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<div class="x_page-header">
+    <h1>개발자센터</h1>
+</div>
+
+<div class="header4">
+    <ul class="x_nav x_nav-tabs">
+        <li><a href="{getUrl('act', 'dispDevcenterAdminConfig')}">기본 기능 설정</a></li>
+        <li class="x_active"><a href="{getUrl('act', 'dispDevcenterAdminApps')}">앱 관리</a></li>
+    </ul>
+</div>
+
+<section class="section">
+    <table class="x_table x_table-striped x_table-hover">
+        <thead>
+            <tr>
+                <th scope="col">제목</th>
+                <th scope="col" class="nowr">썸네일</th>
+                <th scope="col" class="nowr">설명</th>
+                <th scope="col" class="nowr">권한</th>
+                <th scope="col" class="nowr">만든 사람</th>
+                <th scope="col" class="nowr">생성일</th>
+                <th scope="col" class="nowr">-</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--@foreach($container->getEntries() as $entry)-->
+                <tr>
+                    <td>{$entry->getName()}</td>
+                    <td>
+                        <!--@if($entry->getThumbnail() && $config->use_app_thumbnail)-->
+                            <img src="{$entry->getThumbnail()}" alt="" />
+                        <!--@else-->
+                            <img src="/modules/devcenter/skins/default/default_app.png" alt="" />
+                        <!--@endif-->
+                    </td>
+                    <td>{$entry->getDescription()}</td>
+                    <td>
+                        <ul>
+                            <li>{$lang->devcenter_scope_profile_long}</li>
+                            <li>{$lang->devcenter_scope_read_long}</li>
+                            <!--@if(in_array('write', $entry->getScope()))-->
+                                <li>{$lang->devcenter_scope_write_long}</li>
+                            <!--@endif-->
+                            <!--@if(in_array('message', $entry->getScope()))-->
+                                <li>{$lang->devcenter_scope_message_long}</li>
+                            <!--@endif-->
+                            <!--@if(in_array('stream', $entry->getScope()))-->
+                                <li>{$lang->devcenter_scope_stream_long}</li>
+                            <!--@endif-->
+                        </ul>
+                    </td>
+                    <td><a href="{getUrl('act', 'dispMemberAdminInsert', 'member_srl', $entry->getMemberSrl())}" target="_blank">{$entry->getNickname()}</a></td>
+                    <td>{date('Y-m-d', strtotime($entry->getCreatedAt()))}</td>
+                    <td><button type="button" onclick="removeApp('{$entry->getIdentifier()}');" class="x_btn modalAnchor">{$lang->delete}</button></td>
+                </tr>
+            <!--@endforeach-->
+        </tbody>
+    </table>
+</section>
+
+<!--@if($container->getPageHandler())-->
+<div class="x_pagination">
+    <ul>
+        <li class="x_disabled"|cond="!$page || $page == 1"><a href="{getUrl('page', '')}">&laquo; {$lang->first_page}</a></li>
+        <block cond="$container->getPageHandler()->first_page != 1 && $container->getPageHandler()->first_page + $container->getPageHandler()->page_count > $container->getPageHandler()->last_page - 1 && $container->getPageHandler()->page_count != $container->getPageHandler()->total_page">
+            {@$isGoTo = true}
+            <li>
+                <a href="#goTo" data-toggle title="{$lang->cmd_go_to_page}">&hellip;</a>
+                <span cond="$isGoTo" id="goTo" class="x_input-append">
+                        <input type="number" min="1" max="{$container->getPageHandler()->last_page}" required name="page" title="{$lang->cmd_go_to_page}" />
+                        <button type="submit" class="x_add-on">Go</button>
+                    </span>
+            </li>
+        </block>
+
+        <!--@while($page_no = $container->getPageHandler()->getNextPage())-->
+        {@$last_page = $page_no}
+        <li class="x_active"|cond="$page_no == $page"><a href="{getUrl('page', $page_no)}">{$page_no}</a></li>
+        <!--@end-->
+
+        <block cond="$last_page != $container->getPageHandler()->last_page && $last_page + 1 != $container->getPageHandler()->last_page">
+            {@$isGoTo = true}
+            <li>
+                <a href="#goTo" data-toggle title="{$lang->cmd_go_to_page}">&hellip;</a>
+                <span cond="$isGoTo" id="goTo" class="x_input-append">
+                        <input type="number" min="1" max="{$container->getPageHandler()->last_page}" required name="page" title="{$lang->cmd_go_to_page}" />
+                        <button type="submit" class="x_add-on">Go</button>
+                    </span>
+            </li>
+        </block>
+        <li class="x_disabled"|cond="$page == $container->getPageHandler()->last_page"><a href="{getUrl('page', $container->getPageHandler()->last_page)}" title="{$container->getPageHandler()->last_page}">{$lang->last_page} &raquo;</a></li>
+    </ul>
+</div>
+<!--@endif-->
+
+<script>
+    function removeApp(appId) {
+        if (window.confirm('{$lang->devcenter_app_secret_delete_confirm}')) {
+            jQuery.ajax({
+                url: "{getUrl()}",
+                data: {
+                    'module': 'devcenter',
+                    'act': 'procDevcenterAdminRemoveApp',
+                    'xe_validator_id': 'modules/devcenter/tpl/admin_config/1',
+                    'unique_app_srl': appId
+                },
+                type: 'POST',
+                success: function(res) {
+                    if (res.status) {
+                        document.location.reload();
+                    } else {
+                        alert('{$lang->msg_error_occured}');
+                    }
+                },
+                error: function (res) {
+                    var json = res.responseJSON;
+                    if (json && 'app_not_exist' == json.error) {
+                        alert('{$lang->devcenter_app_not_exists}');
+                    } else if (json && 'permission_denied' == json.error) {
+                        alert('{$lang->devcenter_app_permission_denied}');
+                    } else {
+                        alert('{$lang->msg_error_occured}');
+                    }
+                }
+            });
+        }
+
+        return false;
+    }
+</script>

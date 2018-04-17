@@ -1,0 +1,14 @@
+<query id="findFriendSrlByMemberSrlAndTargetSrl" action="select">
+    <tables>
+        <table name="member_friend"  />
+    </tables>
+    <columns>
+        <column name="friend_srl" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="member_srl" var="member_srl" pipe="and" />
+        <condition operation="equal" column="target_srl" var="target_srl" pipe="and" />
+    </conditions>
+    <navigation>
+    </navigation>
+</query>

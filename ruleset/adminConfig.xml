@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ruleset version="1.5.0">
+	<customrules></customrules>
+	<fields>
+		<field name="use_rate_limiter" required="true" rule="number">
+			<title xml:lang="ko">Rate Limiter 사용여부</title>
+		</field>
+		<field name="use_app_thumbnail" required="true" rule="number">
+			<title xml:lang="ko">앱 아이콘 사용여부</title>
+		</field>
+		<field name="rate_limit_capacity" rule="number">
+			<title xml:lang="ko">초당 허용 요청 수</title>
+		</field>
+		<field name="redis_host">
+			<title xml:lang="ko">Redis Host</title>
+		</field>
+		<field name="redis_port" rule="number">
+			<title xml:lang="ko">Redis Port</title>
+		</field>
+	</fields>
+</ruleset>

@@ -1,0 +1,14 @@
+<query id="updateGrantApp" action="update">
+    <tables>
+        <table name="grant_apps" />
+    </tables>
+    <columns>
+        <column name="revoked" var="revoked" notnull="notnull" default="n" />
+        <column name="updated_at" var="updated_at" notnull="notnull" />
+        <column name="expired_at" var="expired_at" notnull="notnull" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="unique_app_srl" var="unique_app_srl" notnull="notnull" pipe="and" />
+        <condition operation="equal" column="member_srl" var="member_srl" notnull="notnull" pipe="and" />
+    </conditions>
+</query>

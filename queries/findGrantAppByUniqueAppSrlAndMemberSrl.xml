@@ -1,0 +1,14 @@
+<query id="findGrantAppByUniqueAppSrlAndMemberSrl" action="select">
+    <tables>
+        <table name="grant_apps"  />
+    </tables>
+    <columns>
+        <column name="grant_srl" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="unique_app_srl" var="unique_app_srl" pipe="and" />
+        <condition operation="equal" column="member_srl" var="member_srl" pipe="and" />
+    </conditions>
+    <navigation>
+    </navigation>
+</query>

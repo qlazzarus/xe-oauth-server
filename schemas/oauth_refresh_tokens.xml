@@ -1,0 +1,9 @@
+<table name="oauth_refresh_tokens">
+    <column name="token_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" auto_increment="auto_increment" />
+    <column name="unique_token_srl" type="varchar" size="100" notnull="notnull" unique="unique_token_srl" />
+    <column name="access_token_srl" type="varchar" size="100" notnull="notnull" />
+    <column name="revoked" type="char" size="1" notnull="notnull" default="n" />
+    <column name="created_at" type="date" />
+    <column name="updated_at" type="date" />
+    <column name="expired_at" type="date" />
+</table>

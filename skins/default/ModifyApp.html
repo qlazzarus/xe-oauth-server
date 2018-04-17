@@ -1,0 +1,237 @@
+<include target="../../../member/skins/default/common_header.html" />
+
+<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/devcenter/skins/default/1'"
+     class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+    <p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<form ruleset="modifyApp" action="./" method="post" class="form-horizontal" id="form-devcenter-modify">
+    <input type="hidden" name="module" value="devcenter" />
+    <input type="hidden" name="act" value="procDevcenterModifyApp" />
+    <input type="hidden" name="xe_validator_id" value="modules/devcenter/skins/default/1" />
+    <input type="hidden" name="unique_app_srl" value="{$entry->getIdentifier()}" />
+    <fieldset>
+        <section class="section">
+            <h2>{$lang->devcenter_modify}</h2>
+            <h3>{$lang->devcenter_app_basic_info}</h3>
+            <div class="control-group">
+                <label class="control-label" for="app_name">{$lang->devcenter_app_name}</label>
+                <div class="controls">
+                    <input name="app_name" id="app_name" type="text" value="{$entry->getName()}" disabled="disabled" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="app_description"><em>*</em> {$lang->devcenter_app_description}</label>
+                <div class="controls">
+                    <input name="app_description" id="app_description" style="width: 500px;" type="text" value="{$entry->getDescription()}" />
+                    <p class="help-block">{$lang->devcenter_app_description_description}</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="app_callback"><em>*</em> {$lang->devcenter_app_callback}</label>
+                <div class="controls">
+                    <input name="app_callback" id="app_callback" style="width: 500px;" type="text" value="{$entry->getRedirectUri()}" />
+                    <p class="help-block">{$lang->devcenter_app_callback_description}</p>
+                </div>
+            </div>
+        </section>
+
+        <hr />
+        <section class="section">
+            <h3>{$lang->devcenter_app_additional_info}</h3>
+            <div class="control-group">
+                <label class="control-label" for="app_thumbnail">{$lang->devcenter_app_thumbnail}</label>
+                <div class="controls">
+                    <span id="thumbnail-container">
+                        <!--@if($entry->getThumbnail() && $config->use_app_thumbnail)-->
+                            <img src="{$entry->getThumbnail()}" alt="" />
+                        <!--@else-->
+                            <img src="default_app.png" alt="" />
+                        <!--@endif-->
+                    </span>
+                    <!--@if($config->use_app_thumbnail)-->
+                        <input name="app_thumbnail" id="app_thumbnail" type="hidden" value="{$entry->getThumbnail()}" />
+                        <p class="help-block">
+                            {$lang->devcenter_app_thumbnail_description}
+                            <input type="button" value="{$lang->cmd_modify}" class="btn btn-default" id="thumbnail-change-btn" />
+                            <input type="button" value="{$lang->cmd_delete}" class="btn btn-default" id="thumbnail-remove-btn" />
+                        </p>
+                    <!--@endif-->
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="app_key">{$lang->devcenter_app_key}</label>
+                <div class="controls">
+                    <input name="app_key" id="app_key" style="width: 500px;" type="text" value="{$entry->getIdentifier()}" disabled="disabled"/>
+                    <p class="help-block">{$lang->devcenter_app_key_description}</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="app_secret">{$lang->devcenter_app_secret}</label>
+                <div class="controls">
+                    <input name="app_scope" id="app_secret" style="width: 500px;" type="text" value="{$entry->getClientSecret()}" disabled="disabled" />
+                    <input type="button" value="{$lang->devcenter_app_secret_change_btn}" class="btn btn-default" id="secret-change-btn" />
+                    <p class="help-block">{$lang->devcenter_app_secret_description}</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="app_website">{$lang->devcenter_app_website}</label>
+                <div class="controls">
+                    <input name="app_website" id="app_website" style="width: 500px;" type="text" value="{$entry->getWebsiteUrl()}" />
+                    <p class="help-block">{$lang->devcenter_app_website_description}</p>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="app_scope">{$lang->devcenter_app_scope}</label>
+                <div class="controls">
+                    <select name="app_scope" id="app_scope">
+                        <!--@foreach(\Monoless\Xe\OAuth2\Server\Utils\ScopeUtil::getPermissions() as $key => $value)-->
+                            <!--@if($value === $entry->getScope())-->
+                                <option value="{$key}" selected="selected">
+                                    <!--@if(1) echo \Monoless\Xe\OAuth2\Server\Utils\ScopeUtil::convertReadable($lang, $value);--><!--@endif-->
+                                </option>
+                            <!--@else-->
+                                <option value="{$key}">
+                                    <!--@if(1) echo \Monoless\Xe\OAuth2\Server\Utils\ScopeUtil::convertReadable($lang, $value);--><!--@endif-->
+                                </option>
+                            <!--@endif-->
+                        <!--@end-->
+                    </select>
+                    <p class="help-block">{$lang->devcenter_app_scope_description}</p>
+                </div>
+            </div>
+        </section>
+    </fieldset>
+    <div class="clearfix" style="border-top:1px solid #ccc;padding-top:10px">
+        <a href="{getUrl('act', 'dispDevcenterConfigApp')}" class="btn btn-primary">{$lang->devcenter_config}</a>
+        <input type="submit" value="{$lang->cmd_modify}" class="btn btn-inverse pull-right" />
+        <input type="button" value="{$lang->cmd_delete}" class="btn btn-danger pull-right" id="delete-app-btn" style="margin: 0 10px;" />
+    </div>
+</form>
+
+<script>
+    jQuery('#delete-app-btn').click(function () {
+        if (window.confirm('{$lang->devcenter_app_secret_delete_confirm}')) {
+            jQuery.ajax({
+                url: "{getUrl()}",
+                data: {
+                    'module': 'devcenter',
+                    'act': 'procDevcenterRemoveApp',
+                    'xe_validator_id': 'modules/devcenter/skins/default/1',
+                    'unique_app_srl': '{$entry->getIdentifier()}'
+                },
+                type: 'POST',
+                success: function(res) {
+                    if (res.status) {
+                        document.location.href = jQuery('.btn-primary').attr('href');
+                    } else {
+                        alert('{$lang->msg_error_occured}');
+                    }
+                },
+                error: function (res) {
+                    var json = res.responseJSON;
+                    if (json && 'app_not_exist' == json.error) {
+                        alert('{$lang->devcenter_app_not_exists}');
+                    } else if (json && 'permission_denied' == json.error) {
+                        alert('{$lang->devcenter_app_permission_denied}');
+                    } else {
+                        alert('{$lang->msg_error_occured}');
+                    }
+                }
+            });
+
+        }
+    });
+
+    jQuery('#secret-change-btn').click(function () {
+        if (window.confirm('{$lang->devcenter_app_secret_change_confirm}')) {
+            jQuery.ajax({
+                url: "{getUrl()}",
+                data: {
+                    'module': 'devcenter',
+                    'act': 'procDevcenterChangeSecret',
+                    'xe_validator_id': 'modules/devcenter/skins/default/1',
+                    'unique_app_srl': '{$entry->getIdentifier()}'
+                },
+                type: 'POST',
+                success: function(res) {
+                    if (res.status) {
+                        jQuery('#app_secret').val(res.client_secret);
+                    } else {
+                        alert('{$lang->msg_error_occured}');
+                    }
+                },
+                error: function (res) {
+                    var json = res.responseJSON;
+                    if (json && 'app_not_exist' == json.error) {
+                        alert('{$lang->devcenter_app_not_exists}');
+                    } else if (json && 'permission_denied' == json.error) {
+                        alert('{$lang->devcenter_app_permission_denied}');
+                    } else {
+                        alert('{$lang->msg_error_occured}');
+                    }
+                }
+            });
+        }
+    });
+
+    jQuery('#thumbnail-change-btn').click(function () {
+        var fileInput = jQuery('#dummy-thumbnail-container');
+        if (!fileInput.length) {
+            jQuery(document.body).append("<input type='file' name='file' id='dummy-thumbnail-container' style='display: none' />");
+            fileInput = jQuery('#dummy-thumbnail-container');
+            fileInput.attr('accept', 'image/png, image/gif, image/jpeg');
+            fileInput.change(function () {
+                var current = this.files;
+                if (current != null && current[0] != null) {
+                    var formData = new FormData();
+                    formData.append('module', 'devcenter');
+                    formData.append('act', 'procDevcenterUploadThumbnail');
+                    formData.append('xe_validator_id', 'modules/devcenter/skins/default/1');
+                    formData.append('file', current[0]);
+                    formData.append('unique_app_srl', '{$entry->getIdentifier()}');
+
+                    jQuery.ajax({
+                        url: "{getUrl()}",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        type: 'POST',
+                        success: function(res) {
+                            if (res.status) {
+                                jQuery('#thumbnail-container').html("<img src='" + res.path + "' alt='' />");
+                                jQuery('#app_thumbnail').val(res.path);
+                            } else {
+                                alert('{$lang->msg_error_occured}');
+                            }
+                        },
+                        error: function (res) {
+                            var json = res.responseJSON;
+                            if (json && 'app_not_exist' == json.error) {
+                                alert('{$lang->devcenter_app_not_exists}');
+                            } else if (json && 'permission_denied' == json.error) {
+                                alert('{$lang->devcenter_app_permission_denied}');
+                            } else if (json && 'file_invalid' == json.error) {
+                                alert('{$lang->devcenter_app_file_invalid}');
+                            } else if (json && 'file_too_big' == json.error) {
+                                alert('{$lang->devcenter_app_file_too_big}');
+                            } else {
+                                alert('{$lang->msg_error_occured}');
+                            }
+                        }
+                    });
+
+                    this.value = '';
+                }
+            });
+        }
+
+        fileInput.click();
+        return false;
+    });
+
+    jQuery('#thumbnail-remove-btn').click(function () {
+        jQuery('#thumbnail-container').html('<img src="default_app.png" alt="" />');
+        jQuery('#app_thumbnail').val('');
+    });
+</script>

@@ -1,0 +1,28 @@
+<query id="findAppsByMemberSrl" action="select">
+    <tables>
+        <table name="external_apps" />
+    </tables>
+    <columns>
+        <column name="app_srl" />
+        <column name="unique_app_srl" />
+        <column name="member_srl" />
+        <column name="name" />
+        <column name="thumbnail" />
+        <column name="description" />
+        <column name="website_url" />
+        <column name="callback_url" />
+        <column name="access_level" />
+        <column name="client_secret" />
+        <column name="created_at" />
+        <column name="updated_at" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="member_srl" var="member_srl" notnull="notnull" />
+    </conditions>
+    <navigation>
+        <index var="sort_index" default="app_srl" order="desc" />
+        <list_count var="list_count" default="20" />
+        <page_count var="page_count" default="10" />
+        <page var="page" default="1" />
+    </navigation>
+</query>

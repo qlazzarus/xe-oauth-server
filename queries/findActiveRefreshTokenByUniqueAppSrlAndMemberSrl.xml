@@ -1,0 +1,26 @@
+<query id="findAccessTokenByUniqueAppSrlAndMemberSrl" action="select">
+    <tables>
+        <table name="oauth_access_tokens" alias="access" />
+        <table name="oauth_refresh_tokens" alias="refresh" type="left join">
+            <conditions>
+                <condition operation="equal" column="access.unique_token_srl" default="refresh.access_token_srl" />
+            </conditions>
+        </table>
+    </tables>
+    <columns>
+        <column name="refresh.token_srl" />
+        <column name="refresh.unique_token_srl" />
+        <column name="refresh.access_token_srl" />
+        <column name="refresh.revoked" />
+        <column name="refresh.created_at" />
+        <column name="refresh.updated_at" />
+        <column name="refresh.expired_at" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="access.unique_app_srl" var="unique_app_srl" notnull="notnull" pipe="and" />
+        <condition operation="equal" column="access.member_srl" var="member_srl" notnull="notnull" pipe="and" />
+        <condition operation="equal" column="access.revoked" default="n" notnull="notnull" pipe="and" />
+        <condition operation="equal" column="refresh.revoked" default="n" notnull="notnull" pipe="and" />
+        <condition operation="more" column="refresh.expired_at" var="expired_at" notnull="notnull" pipe="and" />
+    </conditions>
+</query>

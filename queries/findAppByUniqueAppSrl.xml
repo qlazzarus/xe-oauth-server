@@ -1,0 +1,21 @@
+<query id="findAppByUniqueAppSrl" action="select">
+    <tables>
+        <table name="external_apps" />
+    </tables>
+    <columns>
+        <column name="unique_app_srl" />
+        <column name="member_srl" />
+        <column name="name" />
+        <column name="thumbnail" />
+        <column name="description" />
+        <column name="website_url" />
+        <column name="callback_url" />
+        <column name="access_level" />
+        <column name="client_secret" />
+        <column name="created_at" />
+        <column name="updated_at" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="unique_app_srl" var="unique_app_srl" notnull="notnull" />
+    </conditions>
+</query>

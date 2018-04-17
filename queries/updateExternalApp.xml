@@ -1,0 +1,19 @@
+<query id="updateExternalApp" action="update">
+    <tables>
+        <table name="external_apps" />
+    </tables>
+    <columns>
+        <column name="name" var="name" notnull="notnull" />
+        <column name="thumbnail" var="thumbnail" notnull="notnull" />
+        <column name="description" var="description" notnull="notnull" />
+        <column name="website_url" var="website_url" notnull="notnull" />
+        <column name="callback_url" var="callback_url" notnull="notnull" />
+        <column name="access_level" var="access_level" notnull="notnull" default="w" />
+        <column name="client_secret" var="client_secret" notnull="notnull" />
+        <column name="created_at" var="created_at" notnull="notnull" />
+        <column name="updated_at" var="updated_at" notnull="notnull" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="unique_app_srl" var="unique_app_srl" notnull="notnull" />
+    </conditions>
+</query>

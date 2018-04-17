@@ -1,0 +1,13 @@
+<query id="findRefreshTokenByUniqueTokenSrl" action="select">
+    <tables>
+        <table name="oauth_refresh_tokens" />
+    </tables>
+    <columns>
+        <column name="access_token_srl" />
+        <column name="revoked" />
+        <column name="expired_at" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="unique_token_srl" var="unique_token_srl" notnull="notnull" />
+    </conditions>
+</query>

@@ -1,0 +1,8 @@
+<query id="deleteExternalApp" action="delete">
+    <tables>
+        <table name="external_apps" />
+    </tables>
+    <conditions>
+        <condition operation="equal" column="unique_app_srl" var="unique_app_srl" filter="string" notnull="notnull" />
+    </conditions>
+</query>

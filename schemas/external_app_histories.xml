@@ -1,0 +1,9 @@
+<table name="external_app_histories">
+    <column name="app_history_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" auto_increment="auto_increment" />
+    <column name="unique_app_srl" type="char" size="29" notnull="notnull" index="unique_app_srl" />
+    <column name="member_srl" type="number" size="11" default="0" />
+    <column name="action" type="number" size="11" notnull="notnull" default="0" />
+    <column name="description" type="varchar" size="255" notnull="notnull" default="" />
+    <column name="ip" type="number" size="11" notnull="notnull" default="0" />
+    <column name="created_at" type="date" />
+</table>

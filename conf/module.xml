@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    <grants />
+    <permissions>
+        <permission action="dispDevcenterAuthorize" target="member" />
+        <permission action="dispDevcenterRegisterApp" target="member" />
+        <permission action="dispDevcenterConfigApp" target="member" />
+        <permission action="dispDevcenterModifyApp" target="member" />
+        <permission action="dispDevcenterGrantApp" target="member" />
+        <permission action="dispDevcenterRevokeApp" target="member" />
+        <permission action="procDevcenterAuthorize" target="member" />
+        <permission action="procDevcenterRegisterApp" target="member" />
+        <permission action="procDevcenterModifyApp" target="member" />
+        <permission action="procDevcenterRemoveApp" target="member" />
+        <permission action="procDevcenterRevokeApp" target="member" />
+        <permission action="procDevcenterUploadThumbnail" target="member" />
+        <permission action="procDevcenterChangeSecret" target="member" />
+        <permission action="dispDevcenterAdminConfig" target="admin" />
+        <permission action="dispDevcenterAdminApps" target="admin" />
+        <permission action="procDevcenterAdminConfig" target="admin" />
+        <permission action="procDevcenterAdminRemoveApp" target="admin" />
+    </permissions>
+    <actions>
+        <!-- admin -->
+        <action name="dispDevcenterAdminConfig" type="view" admin_index="true" menu_name="devcenter" menu_index="true" />
+        <action name="dispDevcenterAdminApps" type="view" />
+        <action name="procDevcenterAdminConfig" type="controller" />
+        <action name="procDevcenterAdminRemoveApp" type="controller" />
+
+        <!-- user -->
+        <action name="dispDevcenterAuthorize" type="view" />
+        <action name="dispDevcenterRegisterApp" type="view" />
+        <action name="dispDevcenterConfigApp" type="view" />
+        <action name="dispDevcenterModifyApp" type="view" />
+        <action name="dispDevcenterGrantApp" type="view" index="true" />
+        <action name="dispDevcenterRevokeApp" type="view" />
+        <action name="procDevcenterAuthorize" type="controller" />
+        <action name="procDevcenterRegisterApp" type="controller" ruleset="registerApp" />
+        <action name="procDevcenterModifyApp" type="controller" />
+        <action name="procDevcenterRemoveApp" type="controller" />
+        <action name="procDevcenterRevokeApp" type="controller" />
+        <action name="procDevcenterUploadThumbnail" type="controller" />
+        <action name="procDevcenterChangeSecret" type="controller" />
+
+        <!-- auth api -->
+        <action name="token" type="view" check_csrf="false" />
+
+        <!-- site api -->
+        <action name="sitemap" type="view" check_csrf="false" />
+
+        <!-- member api -->
+        <action name="profile" type="view" check_csrf="false" />
+        <action name="scrap" type="view" check_csrf="false" />
+        <action name="friend" type="view" check_csrf="false" />
+        <action name="message" type="view" check_csrf="false" />
+        <action name="login_history" type="view" check_csrf="false" />
+
+        <!-- board api -->
+        <action name="article" type="view" check_csrf="false" />
+        <action name="comment" type="view" check_csrf="false" />
+        <action name="my_article" type="view" check_csrf="false" />
+        <action name="my_comment" type="view" check_csrf="false" />
+    </actions>
+</module>

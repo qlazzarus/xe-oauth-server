@@ -1,0 +1,17 @@
+<query id="findAccessTokenByUniqueTokenSrl" action="select">
+    <tables>
+        <table name="oauth_access_tokens" />
+    </tables>
+    <columns>
+        <column name="unique_token_srl" />
+        <column name="member_srl" />
+        <column name="unique_app_srl" />
+        <column name="name" />
+        <column name="scopes" />
+        <column name="revoked" />
+        <column name="expired_at" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="unique_token_srl" var="unique_token_srl" notnull="notnull" />
+    </conditions>
+</query>

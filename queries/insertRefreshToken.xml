@@ -1,0 +1,13 @@
+<query id="insertRefreshToken" action="insert">
+    <tables>
+        <table name="oauth_refresh_tokens" />
+    </tables>
+    <columns>
+        <column name="unique_token_srl" var="unique_token_srl" notnull="notnull" />
+        <column name="access_token_srl" var="access_token_srl" default="0" />
+        <column name="revoked" var="revoked" notnull="notnull" />
+        <column name="created_at" var="created_at" notnull="notnull" />
+        <column name="updated_at" var="updated_at" notnull="notnull" />
+        <column name="expired_at" var="expired_at" notnull="notnull" />
+    </columns>
+</query>
