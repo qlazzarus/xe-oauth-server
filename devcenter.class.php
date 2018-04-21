@@ -15,6 +15,7 @@ class devcenter extends ModuleObject
 
     private function composerInstall()
     {
+        chmod(_XE_PATH_ . 'modules/devcenter', 0775);
         chmod(_XE_PATH_ . 'modules/devcenter/composer.phar', 0775);
         exec(_XE_PATH_ . 'modules/devcenter/composer.phar install --working-dir=' . _XE_PATH_ . 'modules/devcenter');
     }
