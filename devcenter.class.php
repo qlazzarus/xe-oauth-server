@@ -4,6 +4,18 @@ if (file_exists(_XE_DEVCENTER_AUTOLOAD)) {
     require_once(_XE_DEVCENTER_AUTOLOAD);
 }
 
+if (!function_exists('getallheaders')) {
+    function getallheaders() {
+        $headers = [];
+        foreach ($_SERVER as $name => $value) {
+            if (substr($name, 0, 5) == 'HTTP_') {
+                $headers[str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
+            }
+        }
+        return $headers;
+    }
+}
+
 class devcenter extends ModuleObject
 {
     const MODULE_NAME = 'devcenter';
@@ -15,7 +27,11 @@ class devcenter extends ModuleObject
 
     private function composerInstall()
     {
-        exec('composer install --working-dir=' . _XE_PATH_ . 'modules/devcenter');
+        chmod(_XE_PATH_ . 'modules/devcenter', 0775);
+        chmod(_XE_PATH_ . 'modules/devcenter/composer.phar', 0775);
+        exec(_XE_PATH_ . 'modules/devcenter/composer.phar install --working-dir=' . _XE_PATH_ . 'modules/devcenter', $output);
+
+        file_put_contents('install.log', implode("\n", $output));
     }
 
     private function generateCertificate()
