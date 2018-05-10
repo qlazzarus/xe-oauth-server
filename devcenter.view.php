@@ -10,6 +10,7 @@ use Monoless\Xe\OAuth2\Server\Services\ResourceService;
 use Monoless\Xe\OAuth2\Server\Services\XpressService;
 use Monoless\Xe\OAuth2\Server\Entities\ClientEntity;
 use Monoless\Xe\OAuth2\Server\Utils\ResponseUtil;
+use Zend\Diactoros\Response\JsonResponse;
 
 class devcenterView extends devcenter
 {
@@ -221,6 +222,13 @@ class devcenterView extends devcenter
          */
         $memberModel = getModel('member');
 
+        /**
+         * @var \moduleModel $moduleModel
+         */
+        $moduleModel = getModel('module');
+
+        $moduleConfig = $moduleModel->getModuleConfig('module');
+
         \Context::addHtmlHeader('<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">');
 
         $params = $request->getQueryParams();
@@ -235,6 +243,7 @@ class devcenterView extends devcenter
             \Context::set('self', ResponseUtil::authorizeRedirectUrl($request, $entry, $state));
             \Context::set('entry', $entry);
             \Context::set('memberInfo', $memberInfo);
+            \Context::set('moduleConfig', $moduleConfig ? $moduleConfig : new stdClass());
             $this->setTemplateFile('Authorize');
         } else {
             $this->setTemplateFile('AuthorizeNotFound');
@@ -353,21 +362,24 @@ class devcenterView extends devcenter
 
     public function sitemap()
     {
-        $publicKeyPath = $this->getPublicKeyPath();
+        /**
+         * @var \devcenterModel $model
+         */
+        $model = getModel(self::MODULE_NAME);
+
+        $request = ServerRequest::fromGlobals();
+        $response = new Response();
+
+        $sitemap = $model->getSitemap();
+        if (!$sitemap) {
+            $sitemap = XpressService::getSitemap($request, $response);
+            $model->setSitemap((string)$sitemap->getBody());
+        } else {
+            $sitemap = new JsonResponse(json_decode($sitemap));
+        }
 
         \Context::setResponseMethod('JSON');
-        ResourceService::processResource(
-            $publicKeyPath,
-            $this->getConfig(),
-            function (RequestInterface $request, ResponseInterface $response) {
-                $method = strtoupper($request->getMethod());
-                if ('GET' == $method) {
-                    return XpressService::getSitemap($request, $response);
-                } else {
-                    return ResponseUtil::notSupportedMethod();
-                }
-            }
-        );
+        ResponseUtil::finalizeResponse($sitemap);
     }
 
     public function article()

@@ -4,7 +4,11 @@
 </div>
 
 <header class="title">
-    <h1>{Context::getBrowserTitle()} 계정 로그인</h1>
+    <!--@if($moduleConfig->siteTitle)-->
+        <h1>`{$moduleConfig->siteTitle}`</h1>
+    <!--@else-->
+        <h1>`{$lang->devcenter_app_website}`</h1>
+    <!--@endif-->
 </header>
 <section>
     <div class="info_app">
@@ -29,7 +33,11 @@
             <header>
                 <h3>{$lang->devcenter_app_third_party_consent}</h3>
                 <p>
-                    `{Context::getBrowserTitle()}`
+                    <!--@if($moduleConfig->siteTitle)-->
+                    `{$moduleConfig->siteTitle}`
+                    <!--@else-->
+                    `{$lang->devcenter_app_website}`
+                    <!--@endif-->
                     {$lang->devcenter_app_third_party_consent_item}
                 </p>
             </header>

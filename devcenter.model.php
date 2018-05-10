@@ -92,6 +92,26 @@ class devcenterModel extends devcenter
         return self::$keys;
     }
 
+    public function getSitemap()
+    {
+        $path = './files/devcenter/sitemap.json';
+        if (\FileHandler::exists($path)) {
+            if (time() > filemtime($path) + 60) {
+                return null;
+            }
+
+            return file_get_contents($path);
+        }
+
+        return null;
+    }
+
+    public function setSitemap($json)
+    {
+        $path = './files/devcenter/sitemap.json';
+        file_put_contents($path, $json);
+    }
+
     /**
      * @param ClientEntity $clientEntity
      * @return boolean

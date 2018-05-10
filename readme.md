@@ -371,15 +371,12 @@ _Response_
       * browser - 브라우져 입니다. (OAuth일 경우는 허용한 앱 이름)
       * register_at - 등록일 입니다.
       
-## 사이트 메뉴 불러오기 (read 권한 필요)
+## 사이트 메뉴 불러오기 (권한 불필요)
 
 해당 사이트의 게시판 리스트들을 가져옵니다.
 
 **GET /?module=devcenter&act=sitemap**
 
-_Request Header_
-  * Authorization - 필수 / Bearer [access_token] 형식으로 보냅니다.
-  
 _Response_
 
     {
