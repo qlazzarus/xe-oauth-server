@@ -32,6 +32,25 @@ class devcenter extends ModuleObject
         exec(_XE_PATH_ . 'modules/devcenter/composer.phar install --working-dir=' . _XE_PATH_ . 'modules/devcenter', $output);
 
         file_put_contents('install.log', implode("\n", $output));
+
+        /**
+         * @var \moduleController $controller
+         */
+        $controller = getController('module');
+
+        /**
+         * @var \moduleModel $model
+         */
+        $model = getModel('module');
+        $config = $model->getModuleConfig(self::MODULE_NAME);
+
+        if ($config instanceof \stdClass) {
+            $config->composer_hash = md5_file(_XE_PATH_ . 'modules/devcenter/composer.json');
+        } else {
+            $this->generateConfig();
+        }
+
+        $controller->insertModuleConfig(self::MODULE_NAME, $config);
     }
 
     private function generateCertificate()
@@ -93,6 +112,7 @@ class devcenter extends ModuleObject
             $config->redis_host = '127.0.0.1';
             $config->redis_port = 6379;
             $config->use_app_thumbnail = false;
+            $config->composer_hash = md5_file(_XE_PATH_ . 'modules/devcenter/composer.json');
         }
 
         $controller->insertModuleConfig(self::MODULE_NAME, $config);
@@ -124,10 +144,20 @@ class devcenter extends ModuleObject
          */
         $moduleModel = getModel('module');
 
+        // check trigger
         foreach($this->triggers as $trigger) {
             if (!$moduleModel->getTrigger($trigger[0], $trigger[1], $trigger[2], $trigger[3], $trigger[4])) {
                 return true;
             }
+        }
+
+        // check config
+        $composerRepos = _XE_PATH_ . 'modules/devcenter/composer.json';
+        $config = $moduleModel->getModuleConfig(self::MODULE_NAME);
+        if (empty($config)) {
+            return true;
+        } elseif (md5_file($composerRepos) != $config->composer_hash) {
+            return true;
         }
 
 		return false;
@@ -186,5 +216,15 @@ class devcenter extends ModuleObject
         }
 
         return new BaseObject();
+    }
+
+    public function __construct()
+    {
+        if ('dispDevcenterAuthorize' == \Context::get('act')) {
+            $mobileInstance = &\Mobile::getInstance();
+            $mobileInstance->setMobile(true);
+        }
+
+        parent::__construct();
     }
 }

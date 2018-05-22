@@ -3,13 +3,6 @@
     <p>{$XE_VALIDATOR_MESSAGE}</p>
 </div>
 
-<header class="title">
-    <!--@if($moduleConfig->siteTitle)-->
-        <h1>`{$moduleConfig->siteTitle}`</h1>
-    <!--@else-->
-        <h1>`{$lang->devcenter_app_website}`</h1>
-    <!--@endif-->
-</header>
 <section>
     <div class="info_app">
         <!--@if($entry->getThumbnail() && $config->use_app_thumbnail)-->
@@ -33,11 +26,7 @@
             <header>
                 <h3>{$lang->devcenter_app_third_party_consent}</h3>
                 <p>
-                    <!--@if($moduleConfig->siteTitle)-->
-                    `{$moduleConfig->siteTitle}`
-                    <!--@else-->
-                    `{$lang->devcenter_app_website}`
-                    <!--@endif-->
+                    `{$entry->getName()}`
                     {$lang->devcenter_app_third_party_consent_item}
                 </p>
             </header>

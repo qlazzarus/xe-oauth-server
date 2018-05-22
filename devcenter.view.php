@@ -222,13 +222,6 @@ class devcenterView extends devcenter
          */
         $memberModel = getModel('member');
 
-        /**
-         * @var \moduleModel $moduleModel
-         */
-        $moduleModel = getModel('module');
-
-        $moduleConfig = $moduleModel->getModuleConfig('module');
-
         \Context::addHtmlHeader('<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">');
 
         $params = $request->getQueryParams();
@@ -243,7 +236,6 @@ class devcenterView extends devcenter
             \Context::set('self', ResponseUtil::authorizeRedirectUrl($request, $entry, $state));
             \Context::set('entry', $entry);
             \Context::set('memberInfo', $memberInfo);
-            \Context::set('moduleConfig', $moduleConfig ? $moduleConfig : new stdClass());
             $this->setTemplateFile('Authorize');
         } else {
             $this->setTemplateFile('AuthorizeNotFound');
