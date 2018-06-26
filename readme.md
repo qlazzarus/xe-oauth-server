@@ -462,12 +462,13 @@ _Response_
 
 게시물을 등록합니다.
 
-**POST /?module=devcenter&act=article**
+**POST /?module=devcenter&act=article&board=[board]**
 
 _Request Header_
   * Authorization - 필수 / Bearer [access_token] 형식으로 보냅니다.
   
 _Request_
+  * board - 필수 / 게시판 ID 입니다.
   * title - 필수 / 게시물 제목 입니다.
   * content - 필수 / 게시물 내용 입니다.
   * allow_comment - 옵션 / 댓글 허용 유무입니다. 기본은 0 입니다.
