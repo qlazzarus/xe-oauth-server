@@ -251,7 +251,7 @@ _Request Header_
 _Request_
   * page - 옵션 / 페이지 파라메터입니다.
   * message_srl - 옵션 / 메세지 키 입니다. 지정시 내용을 읽어옵니다.
-  * message_type - 옵션 / 메세지 타입입니다. 기본값은 receive (받은 메세지) 이며 send (보낸 메세지) / store (보관 메세지) 를 지정이 가능합니다.
+  * category - 옵션 / 메세지 타입입니다. 기본값은 receive (받은 메세지) 이며 send (보낸 메세지) / store (보관 메세지) 를 지정이 가능합니다.
   
 _Response_
 
