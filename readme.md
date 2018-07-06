@@ -289,7 +289,7 @@ _Response_
 
 메세지를 등록합니다.
 
-**POST /?module=devcenter&act=message**
+**POST /?module=devcenter&act=message&member_unique_srl=[memer_unique_srl]**
 
 _Request Header_
   * Authorization - 필수 / Bearer [access_token] 형식으로 보냅니다.
