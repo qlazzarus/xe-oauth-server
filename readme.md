@@ -387,7 +387,9 @@ _Response_
             {
                 "text": "자게",
                 "url": "freeboard",
-                "is_shortcut": "N"
+                "is_shortcut": "N",
+                "module": "board',
+                "browser_title": "자유게시판",
             },
             ...
         ]
@@ -400,6 +402,8 @@ _Response_
       * text - 게시판 명 입니다.
       * url - 게시판 주소입니다.
       * is_shortcut - 단순 링크인지 표기합니다.
+      * module - 게시판 모듈인지 / 페이지 모듈인지 표기합니다.
+      * browser_title - 브라우저 타이틀에 표시되는 내용을 표기합니다.
 
 ## 게시물 불러오기 (stream 권한 필요)
 
@@ -422,6 +426,17 @@ _Response_
         "count": 202835,
         "current_page": 1,
         "total_page": 10142,
+        "grant": {
+            "is_site_admin": true,
+            "manager": true,
+            "access": true,
+            "is_admin": true,
+            "list": true,
+            "view": true,
+            "write_document": true,
+            "write_comment": true,
+            "consultation_read": true
+        },
         "entries": [
             {
                 "article_srl": 4767813,
@@ -444,6 +459,16 @@ _Response_
   * count - 총 row 수입니다.
   * current_page - 현재 page 입니다.
   * total_page - 총 page 수 입니다.
+  * grant - 권한 내용 입니다.
+      * is_site_admin - 사이트 관리자인지 표기합니다.
+      * manager - 해당 게시판 관리 권한이 있는지 표기합니다.
+      * access - 접근 가능한지 표기합니다.
+      * is_admin - 그룹 관리자인지 표기합니다.
+      * list - 리스트 보기 권한이 있는지 표기합니다.
+      * view - 글 보기 권한이 있는지 표기합니다.
+      * write_document - 글 쓰기 권한이 있는지 표기합니다.
+      * write_comment - 댓글 달기 권한이 있는지 표기합니다.
+      * consultation_read - 상담글 읽기 권한이 있는지 표기합니다.
   * entries - 현재 row 가 담긴 배열입니다.
       * article_srl - 게시물 키 입니다.
       * title - 제목 입니다.
