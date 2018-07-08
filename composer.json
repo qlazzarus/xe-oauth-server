@@ -1,6 +1,6 @@
 {
     "require": {
-        "monoless/xe-oauth2-server-bundle": "0.3.1",
+        "monoless/xe-oauth2-server-bundle": "0.3.2",
         "guzzlehttp/psr7": "~1.0"
     }
 }

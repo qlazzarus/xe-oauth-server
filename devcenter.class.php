@@ -25,11 +25,15 @@ class devcenter extends ModuleObject
         ['moduleHandler.init', self::MODULE_NAME, 'controller', 'triggerAddMemberMenu', 'after']
     ];
 
-    private function composerInstall()
+    private function composer($mode = 'install')
     {
+        if (!in_array($mode, ['install', 'update'])) {
+            $mode = 'install';
+        }
+
         chmod(_XE_PATH_ . 'modules/devcenter', 0775);
         chmod(_XE_PATH_ . 'modules/devcenter/composer.phar', 0775);
-        exec('php ' . _XE_PATH_ . 'modules/devcenter/composer.phar install --working-dir=' . _XE_PATH_ . 'modules/devcenter', $output);
+        exec('php ' . _XE_PATH_ . 'modules/devcenter/composer.phar ' . $mode . ' --working-dir=' . _XE_PATH_ . 'modules/devcenter', $output);
 
         /**
          * @var \moduleController $controller
@@ -125,7 +129,7 @@ class devcenter extends ModuleObject
         ini_set('memory_limit', '1G');
         set_time_limit(300);
 
-	    $this->composerInstall();
+	    $this->composer();
 	    $this->generateCertificate();
 	    $this->generateConfig();
 		return new BaseObject();
@@ -170,7 +174,7 @@ class devcenter extends ModuleObject
         ini_set('memory_limit', '1G');
         set_time_limit(300);
 
-        $this->composerInstall();
+        $this->composer('update');
 
         /**
          * @var \moduleModel $moduleModel
