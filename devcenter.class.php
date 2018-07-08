@@ -29,9 +29,7 @@ class devcenter extends ModuleObject
     {
         chmod(_XE_PATH_ . 'modules/devcenter', 0775);
         chmod(_XE_PATH_ . 'modules/devcenter/composer.phar', 0775);
-        exec(_XE_PATH_ . 'modules/devcenter/composer.phar install --working-dir=' . _XE_PATH_ . 'modules/devcenter', $output);
-
-        file_put_contents('install.log', implode("\n", $output));
+        exec('php ' . _XE_PATH_ . 'modules/devcenter/composer.phar install --working-dir=' . _XE_PATH_ . 'modules/devcenter', $output);
 
         /**
          * @var \moduleController $controller
