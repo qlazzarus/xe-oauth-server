@@ -10,6 +10,7 @@ use Monoless\Xe\OAuth2\Server\Services\ResourceService;
 use Monoless\Xe\OAuth2\Server\Services\XpressService;
 use Monoless\Xe\OAuth2\Server\Entities\ClientEntity;
 use Monoless\Xe\OAuth2\Server\Utils\ResponseUtil;
+use Monoless\Xe\OAuth2\Supports\XpressSupport;
 use Zend\Diactoros\Response\JsonResponse;
 
 class devcenterView extends devcenter
@@ -378,14 +379,40 @@ class devcenterView extends devcenter
     {
         $publicKeyPath = $this->getPublicKeyPath();
 
+        $request = ServerRequest::fromGlobals();
+        $queries = $request->getQueryParams();
+        $mId = array_key_exists('board', $queries) ? $queries['board'] : '';
+        $articleSrl = array_key_exists('article_srl', $queries) ? $queries['article_srl'] : '';
+        if ('GET' == strtoupper($request->getMethod()) && $mId) {
+            $loggedInfo = Context::get('logged_info');
+            $moduleModel = getModel('module');
+            $moduleInfo = XpressSupport::getModuleInfoByMId($mId);
+            $grant = $moduleModel->getGrant($moduleInfo, $loggedInfo);
+        } elseif ('GET' == strtoupper($request->getMethod()) && $articleSrl) {
+            $loggedInfo = Context::get('logged_info');
+            $moduleModel = getModel('module');
+            $moduleInfo = XpressSupport::getModuleInfoByArticleSrl($articleSrl);
+            $grant = $moduleModel->getGrant($moduleInfo, $loggedInfo);
+        } else {
+            $grant = null;
+        }
+
+        if ($grant && $articleSrl) {
+            $ignoreSession = $grant->view ? $grant->view : false;
+        } elseif ($grant && $mId) {
+            $ignoreSession = $grant->list ? $grant->list : false;
+        } else {
+            $ignoreSession = false;
+        }
+
         \Context::setResponseMethod('JSON');
         ResourceService::processResource(
             $publicKeyPath,
             $this->getConfig(),
-            function (RequestInterface $request, ResponseInterface $response) {
+            function (RequestInterface $request, ResponseInterface $response) use ($ignoreSession) {
                 $method = strtoupper($request->getMethod());
                 if ('GET' == $method) {
-                    return XpressService::getArticles($request, $response);
+                    return XpressService::getArticles($request, $response, $ignoreSession);
                 } elseif ('POST' == $method) {
                     return XpressService::postArticle($request, $response);
                 } elseif ('PUT' == $method) {
@@ -395,7 +422,8 @@ class devcenterView extends devcenter
                 } else {
                     return ResponseUtil::notSupportedMethod();
                 }
-            }
+            },
+            $ignoreSession
         );
     }
 
@@ -403,14 +431,32 @@ class devcenterView extends devcenter
     {
         $publicKeyPath = $this->getPublicKeyPath();
 
+        $request = ServerRequest::fromGlobals();
+        $queries = $request->getQueryParams();
+        $articleSrl = array_key_exists('article_srl', $queries) ? $queries['article_srl'] : '';
+        if ('GET' == strtoupper($request->getMethod()) && $articleSrl) {
+            $loggedInfo = Context::get('logged_info');
+            $moduleModel = getModel('module');
+            $moduleInfo = XpressSupport::getModuleInfoByArticleSrl($articleSrl);
+            $grant = $moduleModel->getGrant($moduleInfo, $loggedInfo);
+        } else {
+            $grant = null;
+        }
+
+        if ($grant && $articleSrl) {
+            $ignoreSession = $grant->view ? $grant->view : false;
+        } else {
+            $ignoreSession = false;
+        }
+
         \Context::setResponseMethod('JSON');
         ResourceService::processResource(
             $publicKeyPath,
             $this->getConfig(),
-            function (RequestInterface $request, ResponseInterface $response) {
+            function (RequestInterface $request, ResponseInterface $response) use ($ignoreSession) {
                 $method = strtoupper($request->getMethod());
                 if ('GET' == $method) {
-                    return XpressService::getComments($request, $response);
+                    return XpressService::getComments($request, $response, $ignoreSession);
                 } elseif ('POST' == $method) {
                     return XpressService::postComment($request, $response);
                 } elseif ('PUT' == $method) {
@@ -420,7 +466,8 @@ class devcenterView extends devcenter
                 } else {
                     return ResponseUtil::notSupportedMethod();
                 }
-            }
+            },
+            $ignoreSession
         );
     }
 
