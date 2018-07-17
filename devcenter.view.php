@@ -10,7 +10,7 @@ use Monoless\Xe\OAuth2\Server\Services\ResourceService;
 use Monoless\Xe\OAuth2\Server\Services\XpressService;
 use Monoless\Xe\OAuth2\Server\Entities\ClientEntity;
 use Monoless\Xe\OAuth2\Server\Utils\ResponseUtil;
-use Monoless\Xe\OAuth2\Supports\XpressSupport;
+use Monoless\Xe\OAuth2\Server\Supports\XpressSupport;
 use Zend\Diactoros\Response\JsonResponse;
 
 class devcenterView extends devcenter
