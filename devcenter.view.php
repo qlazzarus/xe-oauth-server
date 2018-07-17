@@ -384,13 +384,13 @@ class devcenterView extends devcenter
         $mId = array_key_exists('board', $queries) ? $queries['board'] : '';
         $articleSrl = array_key_exists('article_srl', $queries) ? $queries['article_srl'] : '';
         if ('GET' == strtoupper($request->getMethod()) && $mId) {
-            $loggedInfo = Context::get('logged_info');
-            $moduleModel = getModel('module');
+            $loggedInfo = \Context::get('logged_info');
+            $moduleModel = \getModel('module');
             $moduleInfo = XpressSupport::getModuleInfoByMId($mId);
             $grant = $moduleModel->getGrant($moduleInfo, $loggedInfo);
         } elseif ('GET' == strtoupper($request->getMethod()) && $articleSrl) {
-            $loggedInfo = Context::get('logged_info');
-            $moduleModel = getModel('module');
+            $loggedInfo = \Context::get('logged_info');
+            $moduleModel = \getModel('module');
             $moduleInfo = XpressSupport::getModuleInfoByArticleSrl($articleSrl);
             $grant = $moduleModel->getGrant($moduleInfo, $loggedInfo);
         } else {
@@ -435,8 +435,8 @@ class devcenterView extends devcenter
         $queries = $request->getQueryParams();
         $articleSrl = array_key_exists('article_srl', $queries) ? $queries['article_srl'] : '';
         if ('GET' == strtoupper($request->getMethod()) && $articleSrl) {
-            $loggedInfo = Context::get('logged_info');
-            $moduleModel = getModel('module');
+            $loggedInfo = \Context::get('logged_info');
+            $moduleModel = \getModel('module');
             $moduleInfo = XpressSupport::getModuleInfoByArticleSrl($articleSrl);
             $grant = $moduleModel->getGrant($moduleInfo, $loggedInfo);
         } else {
