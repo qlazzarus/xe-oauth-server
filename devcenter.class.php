@@ -225,6 +225,14 @@ class devcenter extends ModuleObject
         if ('dispDevcenterAuthorize' == \Context::get('act')) {
             $mobileInstance = &\Mobile::getInstance();
             $mobileInstance->setMobile(true);
+            \Context::addHtmlFooter(implode("\n", [
+                '<script>',
+                'var container = jQuery(\'form\').html();',
+                'container = container.replace(/<p[^>]*>\s*<input[^>]*>\s*<label[^>]*>.*<\/label[^>]*>\s*<\/p[^>]*>/igm, \'\');',
+                'container = container.replace(/<ul[^>]*>\s*<li>\s*<a[^>]*>.*<\/a>\s*<\/li>\s*<li>\s*<a[^>]*>.*<\/a>\s*<\/li>\s*<\/ul>/igm, \'\');',
+                'jQuery(\'form\').html(container);',
+                '</script>'
+            ]));
         }
 
         parent::__construct();
