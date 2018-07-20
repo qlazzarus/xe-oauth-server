@@ -397,9 +397,10 @@ class devcenterView extends devcenter
             $grant = null;
         }
 
-        if ($grant && $articleSrl) {
+        $auth = $request->getHeader('Authorization') ? $request->getHeader('Authorization')[0] : null;
+        if (!trim($auth) && $grant && $articleSrl) {
             $ignoreSession = $grant->view ? $grant->view : false;
-        } elseif ($grant && $mId) {
+        } elseif (!trim($auth) && $grant && $mId) {
             $ignoreSession = $grant->list ? $grant->list : false;
         } else {
             $ignoreSession = false;
@@ -443,7 +444,8 @@ class devcenterView extends devcenter
             $grant = null;
         }
 
-        if ($grant && $articleSrl) {
+        $auth = $request->getHeader('Authorization') ? $request->getHeader('Authorization')[0] : null;
+        if (!trim($auth) && $grant && $articleSrl) {
             $ignoreSession = $grant->view ? $grant->view : false;
         } else {
             $ignoreSession = false;
