@@ -93,6 +93,17 @@ class devcenterView extends devcenter
         }
     }
 
+    /**
+     * @param $code
+     */
+    public function dispDevcenterMessage($code)
+    {
+        $msg = \Context::getLang($code);
+        if(!$msg) $msg = $code;
+        \Context::set('message', $msg);
+        $this->setTemplateFile('message');
+    }
+
     public function dispDevcenterGrantApp()
     {
         $request = ServerRequest::fromGlobals();
@@ -125,7 +136,16 @@ class devcenterView extends devcenter
 
     public function dispDevcenterRegisterApp()
     {
-        $this->setTemplateFile('RegisterApp');
+        /**
+         * @var \devcenterModel $devcenterModel
+         */
+        $devcenterModel = getModel(self::MODULE_NAME);
+        $config = $devcenterModel->getConfig();
+        if ($config->use_app_stop_insert) {
+            return $this->dispDevcenterMessage('msg_not_permitted');
+        } else {
+            $this->setTemplateFile('RegisterApp');
+        }
     }
 
     public function dispDevcenterConfigApp()

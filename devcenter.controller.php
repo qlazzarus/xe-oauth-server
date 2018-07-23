@@ -46,6 +46,11 @@ class devcenterController extends devcenter
          */
         $devcenterModel = getModel(self::MODULE_NAME);
 
+        $config = $devcenterModel->getConfig();
+        if ($config->use_app_stop_insert) {
+            return new BaseObject(-1,'msg_not_permitted');
+        }
+
         /**
          * @var \stdClass $loggedInfo
          */

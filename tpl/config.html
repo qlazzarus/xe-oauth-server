@@ -88,6 +88,31 @@
                 <p class="x_help-block">{$lang->devcenter_use_app_thumbnail_description}</p>
             </div>
         </div>
+        <div class="x_control-group">
+            <label for="use_app_stop_insert" class="x_control-label">{$lang->devcenter_use_app_stop_insert}</label>
+            <div class="x_controls">
+                <!--@if ($entry->use_app_insert)-->
+                <label>
+                    <input type="radio" name="use_app_stop_insert" value="1" id="use_app_stop_insert" checked="checked" />
+                    {$lang->use}
+                </label>
+                <label>
+                    <input type="radio" name="use_app_stop_insert" value="0" />
+                    {$lang->notuse}
+                </label>
+                <!--@else-->
+                <label>
+                    <input type="radio" name="use_app_stop_insert" value="1" id="use_app_stop_insert" />
+                    {$lang->use}
+                </label>
+                <label>
+                    <input type="radio" name="use_app_stop_insert" value="0" checked="checked" />
+                    {$lang->notuse}
+                </label>
+                <!--@endif-->
+                <p class="x_help-block">{$lang->devcenter_use_app_stop_insert_description}</p>
+            </div>
+        </div>
         <div class="x_clearfix btnArea">
             <div class="x_pull-right">
                 <button type="submit" class="x_btn x_btn-primary">{$lang->cmd_save}</button>

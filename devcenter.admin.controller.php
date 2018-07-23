@@ -22,6 +22,7 @@ class devcenterAdminController extends devcenter
 
         if (array_key_exists('use_rate_limiter', $params)) $config->use_rate_limiter = (1 == $params['use_rate_limiter']);
         if (array_key_exists('use_app_thumbnail', $params)) $config->use_app_thumbnail = (1 == $params['use_app_thumbnail']);
+        if (array_key_exists('use_app_stop_insert', $params)) $config->use_app_stop_insert = (1 == $params['use_app_stop_insert']);
         if (array_key_exists('rate_limit_capacity', $params)) $config->rate_limit_capacity = $params['rate_limit_capacity'];
         if (array_key_exists('redis_host', $params)) $config->redis_host = $params['redis_host'];
         if (array_key_exists('redis_port', $params)) $config->redis_port = $params['redis_port'];

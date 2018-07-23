@@ -56,7 +56,9 @@
 <div class="clearfix btnArea">
     <div class="pull-right">
         <a href="{getUrl('act', 'dispDevcenterConfigApp', 'page', '', 'client_id', '')}" class="btn btn-primary" type="button">{$lang->devcenter_config}</a>
-        <a href="{getUrl('act', 'dispDevcenterRegisterApp')}" class="btn btn-primary" type="button">{$lang->devcenter_register}</a>
+        <!--@if(!$config->use_app_stop_insert)-->
+            <a href="{getUrl('act', 'dispDevcenterRegisterApp')}" class="btn btn-primary" type="button">{$lang->devcenter_register}</a>
+        <!--@endif-->
         <a href="https://github.com/monoless/xe-oauth-server/blob/master/readme.md" class="btn btn-primary" type="button" target="_blank">{$lang->devcenter_guide}</a>
     </div>
 </div>
