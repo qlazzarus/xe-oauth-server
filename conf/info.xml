@@ -4,7 +4,7 @@
     <title xml:lang="en">Developer Center</title>
     <description xml:lang="ko">O-auth 2.0 로그인과 RESTFul API 를 지원합니다.</description>
     <description xml:lang="en">Provide O-auth 2.0 Login spec And RESTFul API</description>
-    <version>0.4.4</version>
+    <version>0.4.5</version>
     <date>2017-05-16</date>
     <category>system</category>
     <author email_address="ecst@monolife.co.kr" link="http://github.com/monoless/xe-oauth-server">

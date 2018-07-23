@@ -91,23 +91,23 @@
         <div class="x_control-group">
             <label for="use_app_stop_insert" class="x_control-label">{$lang->devcenter_use_app_stop_insert}</label>
             <div class="x_controls">
-                <!--@if ($entry->use_app_insert)-->
+                <!--@if ($entry->use_app_stop_insert)-->
                 <label>
                     <input type="radio" name="use_app_stop_insert" value="1" id="use_app_stop_insert" checked="checked" />
-                    {$lang->use}
+                    {$lang->notuse}
                 </label>
                 <label>
                     <input type="radio" name="use_app_stop_insert" value="0" />
-                    {$lang->notuse}
+                    {$lang->use}
                 </label>
                 <!--@else-->
                 <label>
                     <input type="radio" name="use_app_stop_insert" value="1" id="use_app_stop_insert" />
-                    {$lang->use}
+                    {$lang->notuse}
                 </label>
                 <label>
                     <input type="radio" name="use_app_stop_insert" value="0" checked="checked" />
-                    {$lang->notuse}
+                    {$lang->use}
                 </label>
                 <!--@endif-->
                 <p class="x_help-block">{$lang->devcenter_use_app_stop_insert_description}</p>
